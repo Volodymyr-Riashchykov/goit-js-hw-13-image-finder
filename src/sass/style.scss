@@ -44,19 +44,18 @@ p {
   margin: 0;
 }
 .stats {
-  // flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
   padding-top: 10px;
-  padding-left: 10px;
+  padding-bottom: 10px;
 }
 .stats-item {
   display: flex;
-  text-align: center;
-  align-items: center;
-  padding-bottom: 10px;
+  flex-direction: column;
 }
-.material-icons {
-  padding-right: 10px;
-}
+// .material-icons {
+//   padding-right: 10px;
+// }
 .button {
   display: flex;
   margin: auto;

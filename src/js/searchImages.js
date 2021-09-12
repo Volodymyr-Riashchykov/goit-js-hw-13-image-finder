@@ -13,10 +13,10 @@ const btnEl = document.querySelector('.button');
  
 const app = new ApiService;
 
-btnEl.addEventListener('click', onButton);
+btnEl.addEventListener('click', fetchMarkup);
 formEl.addEventListener('submit', onInput);
 
-let y = 0;
+let primary = 0;
 
 function onInput(e) {
     e.preventDefault();
@@ -32,12 +32,12 @@ function onInput(e) {
     app.keywords = (inputEl.value)
     btnEl.disabled = false;
     fetchMarkup();
-    y = 0;
+    primary = 0;
     }
 
-function onButton() {
-    fetchMarkup();
-}
+// function onButton() {
+//     fetchMarkup();
+// }
 
 async function fetchMarkup() {
     try {
@@ -75,9 +75,9 @@ let options = {
     rootMargin: '0px',
     threshold: 0.5
 }
-let callback = function (entries,observer) {
-    if (y === 0) {
-        y = 1;
+let creatingNewCollection = function (entries,observer) {
+    if (primary === 0) {
+        primary = 1;
         return
     }
     if (entries[0].isIntersecting) {
@@ -85,5 +85,5 @@ let callback = function (entries,observer) {
         fetchMarkup();
     }
 }
-let observer = new IntersectionObserver(callback, options)
+let observer = new IntersectionObserver(creatingNewCollection, options)
 // ------------------------------------------------------------------------------
